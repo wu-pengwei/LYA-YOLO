@@ -1,11 +1,11 @@
-[result_compare (cropped)).pdf](https://github.com/user-attachments/files/31997196/result_compare.cropped.pdf)
 
 # LYA‑YOLO：面向无人机航拍场景的轻量化目标检测算法
 > 本项目对应已发表非OA学术论文，**受版权限制，不开放完整训练源代码**。
 > 本仓库仅开源本人训练产出的模型权重文件（`.pt`），供研究者做推理、效果验证、二次对比参考。
 
 ## 项目简介
-针对无人机航拍场景存在小目标特征易丢失、模型参数量大、推理开销高的痛点，基于YOLOv8框架提出轻量化目标检测算法 LYA‑YOLO。
+针对无人机航拍场景存在小目标特征易丢失、模型参数量大、推理开销高的痛点，基于YOLOv8框架提出轻量化目标检测算法 LYA‑YOLO。<img width="1600" height="900" alt="result_compare1" src="https://github.com/user-attachments/assets/9956c671-1990-40bd-acc3-4c70bf79576b" />
+
 1. 设计 SIF 特征交互融合模块，强化多尺度小目标特征融合能力；
 2. 提出 IIA‑GhostC2f 轻量化主干网络，在保证特征表达能力前提下削减计算量；
 3. 重构 LDCN‑Head 轻量化检测头，降低网络计算冗余；
