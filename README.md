@@ -1,1 +1,35 @@
-# LYA-YOLO
+[result_compare (cropped)).pdf](https://github.com/user-attachments/files/31997196/result_compare.cropped.pdf)
+
+# LYA‑YOLO：面向无人机航拍场景的轻量化目标检测算法
+> 本项目对应已发表非OA学术论文，**受版权限制，不开放完整训练源代码**。
+> 本仓库仅开源本人训练产出的模型权重文件（`.pt`），供研究者做推理、效果验证、二次对比参考。
+
+## 项目简介
+针对无人机航拍场景存在小目标特征易丢失、模型参数量大、推理开销高的痛点，基于YOLOv8框架提出轻量化目标检测算法 LYA‑YOLO。
+1. 设计 SIF 特征交互融合模块，强化多尺度小目标特征融合能力；
+2. 提出 IIA‑GhostC2f 轻量化主干网络，在保证特征表达能力前提下削减计算量；
+3. 重构 LDCN‑Head 轻量化检测头，降低网络计算冗余；
+4. 在 VisDrone2019、UAVDT 航拍公开数据集完成消融实验与对比实验，实现检测精度与推理速度的平衡。
+
+本仓库主要提供 S 尺度版本权重，对比基线为 YOLOv8‑S。
+
+## 📂 仓库包含内容
+> ⚠️ 重要：论文为非OA出版，**完整训练源码不予公开**。
+本仓库上传资源清单：
+1. `weights/LYA‑YOLO‑N.pt`：LYA‑YOLO‑N 版本训练完成权重（主模型pt文件）
+2. `weights/LYA‑YOLO‑X.pt`：LYA‑YOLO‑X 极限版本权重（极限模型pt文件）
+3. 【这里后续补充你新增上传的材料】
+
+> 注意：权重文件仅支持模型推理、效果演示，无法直接用于完整训练复现。如果需要复现完整训练流程，请参考论文内网络结构描述、模块细节、实验参数，基于YOLOv8官方开源框架进行复现。
+
+## 🔧 推理运行说明
+> 环境依赖：PyTorch >=2.0, OpenCV, ONNX, TensorRT（可选，用于端侧加速）
+> 你可以基于YOLOv8官方推理脚本，替换本项目提供的权重文件进行推理验证。
+```python
+# 示例推理伪代码，仅演示权重加载推理逻辑
+from ultralytics import YOLO
+
+# 加载本项目提供的权重
+model = YOLO("weights/LYA‑YOLO‑N.pt")
+results = model.predict("demo_images/")
+
